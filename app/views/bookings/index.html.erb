@@ -1,0 +1,10 @@
+<h1>Bookings</h1>
+<% if current_user.photographer? %>
+  <% @bookings.each do |booking| %>
+    <p><%= booking.user.email %> booked for <%= booking.date %></p>
+  <% end %>
+<% else %>
+  <% @bookings.each do |booking| %>
+    <p>You booked for <%= booking.date %></p>
+  <% end %>
+<% end %>

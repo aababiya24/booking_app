@@ -1,0 +1,6 @@
+<h1>Client Dashboard</h1>
+<p>Welcome, <%= current_user.email %>! Here you can book appointments.</p>
+<%= link_to 'Book a Time', new_booking_path %>
+
+
+<%= button_to 'Sign Out', destroy_user_session_path, method: :delete %>
