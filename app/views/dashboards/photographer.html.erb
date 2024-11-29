@@ -1,6 +1,33 @@
 <h1>Photographer Dashboard</h1>
-<p>Welcome, <%= current_user.email %>! Here you can view all bookings.</p>
-<%= link_to 'View Bookings', bookings_path %>
+<p>Welcome, <%= current_user.first_name %>! Here you can view all bookings.</p>
+
+
+<h2>Upcoming Bookings</h2>
+<% if @bookings.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Client Name</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.user.full_name %></td>
+          <td><%= booking.date.strftime("%-I:%M %p, %B %d, %Y") %></td>
+          <td>
+            <%= link_to "View Details", booking_path(booking), class: "btn btn-primary" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No bookings yet.</p>
+<% end %>
+
 
 
 <%= button_to 'Sign Out', destroy_user_session_path, method: :delete %>

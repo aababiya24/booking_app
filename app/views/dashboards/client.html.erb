@@ -1,6 +1,32 @@
 <h1>Client Dashboard</h1>
-<p>Welcome, <%= current_user.email %>! Here you can book appointments.</p>
-<%= link_to 'Book a Time', new_booking_path %>
+<p>Welcome, <%= current_user.first_name %>! Here you can book appointments.</p>
 
+<div id="search-section">
+  <h2>Search for Photographers</h2>
+  <%= form_with url: client_dashboard_path, method: :get, local: true do |form| %>
+    <%= form.text_field :search, placeholder: "Search by first name", class: "form-control" %>
+    <%= form.submit "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<div id="photographers-list">
+  <% if @photographers.any? %>
+    <h3>Search Results:</h3>
+    <% @photographers.each do |photographer| %>
+      <div class="photographer-card">
+        <p>Name: <%= photographer.full_name %></p>
+        <p>Email: <%= photographer.email %></p>
+        <%= link_to "Book Now", new_booking_path(photographer_id: photographer.id), class: "btn btn-success" %>
+      </div>
+    <% end %>
+  <% else %>
+    <% if params[:search].present? %>
+      <p>No photographers found matching '<%= params[:search] %>'.</p>
+    <% end %>
+  <% end %>
+</div>
+
+
+<%= link_to 'View Bookings', bookings_path %>
 
 <%= button_to 'Sign Out', destroy_user_session_path, method: :delete %>

@@ -11,10 +11,26 @@ class DashboardsController < ApplicationController
   
     def client
       # Logic for the client's dashboard
+      if current_user.client?
+        @photographers = if params[:search].present?
+                           User.photographers_by_first_name(params[:search])
+                         else
+                           User.photographers
+                         end
+      else
+        redirect_to root_path, alert: "Access denied!"
+      end
     end
   
     def photographer
       # Logic for the photographer's dashboard
+      if current_user.photographer?
+        
+        @bookings = Booking.where(photographer_id: current_user.id).order(date: :asc)
+    
+      else
+        redirect_to root_path, alert: "Access denied!"
+      end
     end
   end
   

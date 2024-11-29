@@ -5,6 +5,10 @@
   <% end %>
 <% else %>
   <% @bookings.each do |booking| %>
-    <p>You booked for <%= booking.date %></p>
+    <p>You booked for <%= booking.date.strftime('%-I:%M %p, %B %d, %Y') %></p>
   <% end %>
+
+
+  <%= link_to 'dashboard', client_dashboard_path %>
 <% end %>
+

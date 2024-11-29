@@ -11,8 +11,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  # Permit the role parameter for sign-up
+  # Permit the role parameter for sign-up and also added first name and last name because it wasnt saving the registration
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:role, :first_name, :last_name ])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :role])
   end
 end

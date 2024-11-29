@@ -1,11 +1,16 @@
-<h1>New Booking</h1>
-<%= form_with model: @booking, local: true do |form| %>
+<h1>Book Photographer: <%= @photographer.full_name %></h1>
+
+<p>Email: <%= @photographer.email %></p>
+
+<%= form_with model: @booking, url: bookings_path, local: true do |form| %>
+  <%= form.hidden_field :photographer_id, value: @photographer.id %>
   <div>
-    <%= form.label :date %>
-    <%= form.datetime_select :date %>
+    <%= form.label :date, "Select Booking Date and Time" %>
+    <%= form.datetime_select :date, start_year: Time.zone.now.year, minute_step: 15, ampm: true %>
   </div>
-  <div>
-    <%= form.submit 'Book Time' %>
-  </div>
+
+  <%= form.submit "Confirm Booking", class: "btn btn-success" %>
+
+  <%= link_to 'dashboard', client_dashboard_path %>
 <% end %>
 
