@@ -19,7 +19,8 @@ class BookingsController < ApplicationController
       @photographer = User.photographers.find(params[:booking][:photographer_id])
       @booking = current_user.bookings.build(booking_params)
       if @booking.save
-        redirect_to bookings_path, notice: 'Booking was successfully created.'
+        flash[:notice] = "Thank you! Your booking has been confirmed."
+        redirect_to client_dashboard_path
       else
         render :new, alert: 'Error creating booking.'
       end

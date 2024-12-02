@@ -1,17 +1,21 @@
-
-<% if current_user.photographer? %>
-  <% @bookings.each do |booking| %>
-    <p>Client: <%= booking.user.full_name %></p>
-    <p><%= booking.user.email %> booked for <%= booking.date %></p>
+<div class="bookings-container">
+  <% if current_user.photographer? %>
+    <% @bookings.each do |booking| %>
+      <div class="booking-card">
+        <p class="booking-name">Client: <%= booking.user.full_name %></p>
+        <p class="booking-email"><%= booking.user.email %></p>
+        <p class="booking-date">Booked for <%= booking.date %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <% @bookings.each do |booking| %>  
+      <div class="booking-card">
+        <p class="booking-name">Photographer: <%= booking.photographer.full_name %></p>
+        <p class="booking-email">Email: <%= booking.photographer.email %></p>
+        <p class="booking-date">Booked for <%= booking.date.strftime('%-I:%M %p, %B %d, %Y') %></p>
+      </div>
+    <% end %>
   <% end %>
-<% else %>
-  <% @bookings.each do |booking| %>
-    <p>Photographer: <%= booking.photographer.full_name %></p>
-    <p>Email: <%= booking.photographer.email %></p>
-    <p>You booked for <%= booking.date.strftime('%-I:%M %p, %B %d, %Y') %></p>
-
-  <% end %>
-
-<% end %>
+</div>
 
 
