@@ -20,6 +20,8 @@ class DashboardsController < ApplicationController
       else
         redirect_to root_path, alert: "Access denied!"
       end
+
+      @bookings = Booking.where(user_id: current_user.id)
     end
   
     def photographer

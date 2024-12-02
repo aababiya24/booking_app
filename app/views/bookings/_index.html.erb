@@ -1,14 +1,17 @@
-<h1>Bookings</h1>
+
 <% if current_user.photographer? %>
   <% @bookings.each do |booking| %>
+    <p>Client: <%= booking.user.full_name %></p>
     <p><%= booking.user.email %> booked for <%= booking.date %></p>
   <% end %>
 <% else %>
   <% @bookings.each do |booking| %>
+    <p>Photographer: <%= booking.photographer.full_name %></p>
+    <p>Email: <%= booking.photographer.email %></p>
     <p>You booked for <%= booking.date.strftime('%-I:%M %p, %B %d, %Y') %></p>
+
   <% end %>
 
-
-  <%= link_to 'dashboard', client_dashboard_path %>
 <% end %>
+
 

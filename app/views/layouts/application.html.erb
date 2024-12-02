@@ -13,8 +13,19 @@
     <%= javascript_include_tag "application", type: "module", "data-turbo-track": "reload", defer: true %>
    <!-- Custom Styles -->
   </head>
-
   <body>
+
+    <% if user_signed_in? %>
+      <% if current_user.client? %>
+        <%= render 'layouts/client_navbar' %>  <!-- Navbar for clients -->
+      <% elsif current_user.photographer? %>
+        <%= render 'layouts/photographer_navbar' %>  <!-- Navbar for photographers -->
+      <% end %> <!-- No navbar for other types of users -->
+    <% else %>
+      <%= render 'layouts/navbar' %>  <!-- Navbar for non-logged-in users -->
+    <% end %>
+  
+
     <%= yield %>
   </body>
 </html>
