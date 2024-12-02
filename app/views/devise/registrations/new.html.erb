@@ -1,9 +1,10 @@
-<div class="container-fluid">
+<div id="signup-form">
+<div class="container-fluid m-4">
   <div class="row login-container">
     <!-- Right side form -->
-    <div class="col-md-6 d-flex align-items-center">
+    <div class="col-md-6 pt-2 d-flex align-items-center">
       <div class="form-container w-100">
-        <h2 class="login-heading mb-4">Sign up</h2>
+        <h2 class="login-heading  mb-3">Sign up</h2>
         
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
@@ -20,12 +21,12 @@
             </div>
           </div>
 
-          <div class="mt-2">
+          <div class="mt-1">
             <%= f.label :email, class: "form-label" %>
             <%= f.email_field :email, autocomplete: "email", class: "form-control form-control-sm" %>
           </div>
 
-          <div class="mt-2">
+          <div class="mt-1">
             <%= f.label :password, class: "form-label" %>
             <% if @minimum_password_length %>
             <span class="text-muted small">(<%= @minimum_password_length %> characters min)</span>
@@ -33,12 +34,12 @@
             <%= f.password_field :password, autocomplete: "new-password", class: "form-control form-control-sm" %>
           </div>
 
-          <div class="mt-2">
+          <div class="mt-1">
             <%= f.label :password_confirmation, class: "form-label " %>
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-sm" %>
           </div>
 
-          <div class="mt-2">
+          <div class="mt-1">
             <%= f.label :role, class: "form-label" %>
             <%= f.select :role, 
                 User.roles.keys.map { |role| [role.humanize, role] }, 
@@ -59,8 +60,9 @@
     </div>
 
     <!-- Left side image -->
-    <div class="col-md-6 p-0 d-flex align-items-center"> 
+    <div class="col-md-6 px-0 d-flex align-items-center"> 
       <%= image_tag 'photo4.jpg' ,class: "img-fluid" %>
     </div>
   </div>
+</div>
 </div>

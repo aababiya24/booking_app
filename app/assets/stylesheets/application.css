@@ -17,8 +17,27 @@
     height: 100%;
     margin: 0;
 
-  }  
+  }
+  
+  .navbar{
+    margin: 0px 90px;
 
+
+    
+  }
+#login-form{
+  height: 90.4vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#signup-form{
+  height: 84.4vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
   .form-container {
     padding: 0rem;
     margin: 60px;
@@ -56,7 +75,7 @@
     margin-top: 1rem;
     
     &:hover {
-      background-color: #524343;
+      background-color: #564545;
       color: white;
     }
   }
