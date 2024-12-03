@@ -86,7 +86,7 @@
     
     a {
       display: block;
-      color: #6c757d;
+      color: #515A5D;
       text-decoration: none;
       margin: 0.5rem 0;
       
@@ -180,7 +180,7 @@
 
 .view-bookings-link {
     display: inline-block;
-    color: #6c757d;
+    color: #515A5D;
     text-decoration: none;
     margin-top: 1rem;
 }
@@ -208,7 +208,7 @@
  }
  
  .booking-email {
-  color: #6c757d;
+  color: #515A5D;
   margin-bottom: 0.5rem;
  }
  
@@ -251,7 +251,7 @@
 
 .pg-welcome-text {
   text-align: center;
-  color: #6c757d;
+  color: #515A5D;
   margin-bottom: 2rem;
   font-size: 1.1rem;
 }
@@ -288,7 +288,7 @@
 }
 
 .pg-booking-date {
-  color: #6c757d;
+  color: #515A5D;
   margin: 0;
 }
 
@@ -312,7 +312,7 @@
   background: white;
   border-radius: 8px;
   border: 1px solid #dee2e6;
-  color: #6c757d;
+  color: #515A5D;
 }
 
 .pg-details-card {

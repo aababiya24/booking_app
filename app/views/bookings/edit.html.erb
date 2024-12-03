@@ -10,16 +10,11 @@
                 <%= form.hidden_field :photographer_id, value: @photographer.id %>
             </div>
 
-          <div class="row mb-3">
-            <div class="col-md-6">
-              <%= form.label :date, "Select Booking Date", class: "form-label" %>
-              <%= form.date_field :date, class: "form-control" %>
+            <div class="row mb-3">
+              <%= form.label :date, "Select Booking Date and Time", class: "form-label" %>
+              <%= form.datetime_local_field :date, class: "form-control" %>
+        
             </div>
-            <div class="col-md-6">
-              <%= form.label :time, "Select Booking Time", class: "form-label" %>
-              <%= form.time_field :time, minute_step: 150, class: "form-control" %>
-            </div>
-          </div>
 
           <div class="mb-3">
             <%= form.label :message, "Your Message", class: "form-label" %>

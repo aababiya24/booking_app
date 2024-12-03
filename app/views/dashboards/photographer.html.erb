@@ -14,7 +14,7 @@
                 <div>
                   <h5 class="pg-booking-title"><%= booking.user.full_name %></h5>
                   <p class="pg-booking-date">
-                    <%= booking.date.strftime("%-I:%M %p, %B %d, %Y") %>
+                    <%= booking.date.strftime('%B %d, %Y, %-I:%M %p') %>
                   </p>
                 </div>
                 <button class="pg-action-btn" 
@@ -52,7 +52,7 @@
                 </div>
                 <div class="pg-detail-item">
                   <dt>Date & Time</dt>
-                  <dd><%= booking.date.strftime("%-I:%M %p, %B %d, %Y") %></dd>
+                  <dd><%= booking.date.strftime('%B %d, %Y, %-I:%M %p') %></dd>
                 </div>
 
                 <div class="pg-detail-item">
