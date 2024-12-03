@@ -1,4 +1,4 @@
-<div class="pg-container py-4">
+<div class="pg-container py-4 px-1">
   <h1 class="pg-main-heading">Photographer Dashboard</h1>
   <p class="pg-welcome-text">Welcome, <%= current_user.first_name %>! Manage your photography sessions here.</p>
 
@@ -40,7 +40,10 @@
       <% @bookings.each do |booking| %>
         <div class="collapse" id="booking<%= booking.id %>Details">
           <div class="pg-details-card bg-body-tertiary">
-            <h4 class="pg-details-heading">Booking Details</h4>
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn-close" data-bs-toggle="collapse" data-bs-target="#booking<%= booking.id %>Details" aria-label="Close"></button>
+            </div>
+            <h4 class="pg-details-heading mb-0">Booking Details</h4>
             <div class="pg-details-content">
               <dl class="pg-details-list">
                 <div class="pg-detail-item">
@@ -58,7 +61,7 @@
                 </div>
                 <div class="pg-detail-item">
                   <dt>Message</dt>
-                  <dd><%=  'None' %></dd>
+                  <dd><%=  booking.message || "No message provided" %></dd>
                 </div>
               </dl>
               <div class="link-secondary">

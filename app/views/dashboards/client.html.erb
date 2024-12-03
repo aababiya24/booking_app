@@ -33,13 +33,11 @@
             <% end %>
 <div> 
             <% if params[:search].present? %>
-            <button class="btn btn-primary mt-3 search-result"  type="button" data-bs-toggle="collapse" data-bs-target="#searchResults" aria-expanded="true" aria-controls="searchResults">
-               Search Results
-            </button>
+            <button class="btn mt-3 search-result  btn-sm"  type="button" data-bs-toggle="collapse" data-bs-target="#searchResults" aria-expanded="true" aria-controls="searchResults">Search Result</button>
             <div id="searchResults" class="collapse show mt-4">
           <% else %>
-            <button class="btn btn-primary mt-3 search-result"  type="button" data-bs-toggle="collapse" data-bs-target="#searchResults" aria-expanded="false" aria-controls="searchResults">
-              Search Results
+            <button class="btn mt-3 search-result  btn-sm"  type="button" data-bs-toggle="collapse" data-bs-target="#searchResults" aria-expanded="false" aria-controls="searchResults">
+              Show all
             </button>
             <div id="searchResults" class="collapse mt-4">
           <% end %>
@@ -54,7 +52,7 @@
                   </div>
                 <% end %>
               <% else %>
-                <p>No photographers found matching '<%= params[:search] %>'.</p>
+                <p>No photographers found'<%= params[:search] %>'.</p>
               <% end %>
             </div>
           

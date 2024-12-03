@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="form-container mt-5">
+        <h2 class="login-heading mb-4 text-center">Edit Booking</h2>
+        
+        <%= form_with model: @booking, url: booking_path(@booking), method: :patch, local: true do |form| %>
+            <div class="mb-3 text-center">
+                <p>Photographer: <%= @photographer.full_name %></p>
+                <%= form.hidden_field :photographer_id, value: @photographer.id %>
+            </div>
+
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <%= form.label :date, "Select Booking Date", class: "form-label" %>
+              <%= form.date_field :date, class: "form-control" %>
+            </div>
+            <div class="col-md-6">
+              <%= form.label :time, "Select Booking Time", class: "form-label" %>
+              <%= form.time_field :time, minute_step: 150, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :message, "Your Message", class: "form-label" %>
+            <%= form.text_area :message, class: "form-control", rows: 4 %>
+          </div>
+
+          <div class="d-grid gap-2">
+            <%= form.submit "Update Booking", class: "btn btn-success btn-block" %>
+          </div>
+
+          <div class="text-center mt-3">
+            <%= link_to 'Go Back', client_dashboard_path, class: "text-muted" %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

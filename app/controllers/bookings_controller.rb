@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
     before_action :authenticate_user!
+    before_action :set_booking, only: [:edit, :update, :destroy]
     before_action :ensure_client_role
   
     def index
@@ -9,6 +10,19 @@ class BookingsController < ApplicationController
         @bookings = current_user.bookings
       end
     end
+
+    def edit
+      @photographer = @booking.photographer # Fetch the associated photographer
+    end
+
+    def update
+      if @booking.update(booking_params)
+        redirect_to client_dashboard_path, notice: 'Booking was successfully updated.'
+      else
+        render :edit, alert: 'Error updating booking.'
+      end
+    end
+
   
     def new
       @photographer = User.photographers.find(params[:photographer_id])
@@ -25,11 +39,23 @@ class BookingsController < ApplicationController
         render :new, alert: 'Error creating booking.'
       end
     end
+
+    def destroy
+      @booking.destroy!
+      redirect_to client_dashboard_path, notice: 'Booking deleted successfully.'
+      
+    end
+
+
   
     private
+
+    def set_booking
+      @booking = Booking.find(params[:id])
+    end
   
     def booking_params
-      params.require(:booking).permit(:date, :photographer, :photographer_id)
+      params.require(:booking).permit(:date, :photographer, :photographer_id, :message)
     end
 
     def ensure_client_role

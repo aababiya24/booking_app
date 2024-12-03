@@ -20,7 +20,7 @@
   }
   
   .navbar{
-    margin: 0px 90px;
+    margin: 0px 30px;
 
 
     
@@ -225,8 +225,14 @@
  /* search result  */
 
  .search-result{
-  width: 30%;
-  background-color: #6c757d;
+  /* width: 20%; */
+  background-color: #5d5d5d;
+  color: white;
+
+  &:hover {
+    background-color: #564545;
+    color: white;
+  }
  }
 
 
