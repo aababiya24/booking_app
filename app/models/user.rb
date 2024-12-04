@@ -23,4 +23,17 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true, length: { minimum: 6 }
+
+  validate :email_format
+  def email_format
+      unless email =~ /\A[\w+\-.]+@msudenver\.edu\z/i
+          errors.add(:email, "must be an @gmail.com email address")
+      end
+  end
+
+
 end

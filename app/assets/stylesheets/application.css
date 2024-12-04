@@ -20,20 +20,21 @@
   }
   
   .navbar{
-    margin: 0px 30px;
+    /* margin: 0px 30px; */
+    padding: 8px 30px;
 
 
     
   }
 #login-form{
-  height: 90.4vh;
+  /* height: 90.4vh; */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #signup-form{
-  height: 84.4vh;
+  /* height: 84.4vh; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,12 +68,12 @@
   
   .btn-login {
     width: 100%;
-    padding: 0.75rem;
+    padding: 1rem 0.75rem;
     background-color: #000000;
     border: none;
     border-radius: 8px;
     color: white;
-    font-weight: 500;
+    font-weight: 700;
     margin-top: 1rem;
     
     &:hover {
@@ -84,10 +85,11 @@
   .links-container {
     margin-top: 1rem;
     text-align: right;
+    font-size: 1rem;
     
     a {
       display: block;
-      color: #515A5D;
+      color: #564545;
       text-decoration: none;
       margin: 0.5rem 0;
       
@@ -346,23 +348,24 @@
 /* welocome page */
 
 .welcome-section {
-  min-height: 91.2vh;
-  /* background: linear-gradient(rgba(0, 0, 0, 0.303), rgba(0, 0, 0, 0.244)),url('assets/homephoto2.jpg'); */
-  background: url('assets/homephoto2.jpg');
-  background-size: 86.2%;
+  min-height: 65vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.244), rgba(0, 0, 0, 0.266)),url('assets/homephoto4.jpg');
+ 
+  background-size: 66.2%;
   background-position:right;
   display: flex;
   align-items: center;
   /* padding-top: 76px; */
-  padding-left: 67px;
+  /* padding-left: 67px; */
   
 }
 
 .welcome-text {
   /* text-shadow: 2px 2px 4px rgb(205, 134, 134); */
   /* margin-top: -100px; */
-  color: #f8606a;
-  /* width: 40%; */
+  
+  color: #564545;
+  width: 100%;
 
 }
 
@@ -371,11 +374,11 @@
 }
 
 .sub-text {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   /* font-weight: 600; */
   /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.626); */
-  width: 80%;
-  color: #000;
+  /* width: 80%; */
+  color: #000000;
   font-weight: normal;
   
 
@@ -388,13 +391,21 @@
   letter-spacing: 1px;
   transition: all 0.3s ease;
   border-width: 2px;
-  width: 29%;
-  background-color: #6D3249;
+  max-width: 32%;
+  
+  background-color: #000000;
 }
 
 .btn-custom:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.546);
+}
+
+.content-box {
+  background-color: rgba(255, 255, 255, 0.828);
+  padding: 2rem 0rem;
+  border-radius: 10px;
+  backdrop-filter: blur(9px);
 }
 
 
