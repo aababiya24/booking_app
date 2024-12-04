@@ -346,7 +346,7 @@
 /* welocome page */
 
 .welcome-section {
-  min-height: 100vh;
+  min-height: 91.2vh;
   /* background: linear-gradient(rgba(0, 0, 0, 0.303), rgba(0, 0, 0, 0.244)),url('assets/homephoto2.jpg'); */
   background: url('assets/homephoto2.jpg');
   background-size: 86.2%;
@@ -354,14 +354,14 @@
   display: flex;
   align-items: center;
   /* padding-top: 76px; */
-  padding-left: 100px;
+  padding-left: 67px;
   
 }
 
 .welcome-text {
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.607);
-  margin-top: -100px;
-  color: #ea48ac;
+  /* text-shadow: 2px 2px 4px rgb(205, 134, 134); */
+  /* margin-top: -100px; */
+  color: #f8606a;
   /* width: 40%; */
 
 }
@@ -371,29 +371,30 @@
 }
 
 .sub-text {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   /* font-weight: 600; */
   /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.626); */
   width: 80%;
-  color: black;
+  color: #000;
+  font-weight: normal;
   
 
 }
 
 .btn-custom {
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: all 0.3s ease;
   border-width: 2px;
-  width: 35%;
-  background-color: #000000;
+  width: 29%;
+  background-color: #6D3249;
 }
 
 .btn-custom:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.546);
 }
 
 
@@ -424,4 +425,47 @@
   font-size: 2.5rem;
   color: var(--primary-color);
   margin-bottom: 1rem;
+}
+
+/* footer */
+.footer {
+  padding:40px 0;
+  background-color:#ffffff;
+  color:#4b4c4d;
+}
+.footer-heading{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.footer .social {
+  text-align:center;
+  padding-bottom:25px;
+}
+
+.footer .social > a {
+  font-size:24px;
+  width:40px;
+  height:40px;
+  line-height:40px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  border:1px solid #523333;
+  margin:0 8px;
+  color:inherit;
+  opacity:0.75;
+  color: #515151;
+}
+
+.footer .social > a:hover {
+  opacity:1;
+}
+
+.footer .copyright {
+  margin-top:15px;
+  text-align:center;
+  font-size:16px;
+  color:#aaa;
+  margin-bottom:0;
 }
