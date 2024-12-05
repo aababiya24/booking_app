@@ -22,7 +22,7 @@ User.destroy_all
 
   User.create!(
     email: "#{first_name.downcase}@gmail.com", # Use the first name for the email
-    password: "bookaphoto",
+    password: "password",
     first_name: first_name,
     last_name: last_name,
     role: ["client", "photographer"].sample
