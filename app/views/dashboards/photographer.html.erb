@@ -1,6 +1,77 @@
-<h1>Photographer Dashboard</h1>
-<p>Welcome, <%= current_user.email %>! Here you can view all bookings.</p>
-<%= link_to 'View Bookings', bookings_path %>
+<div class="pg-container py-4 px-1">
+  <h1 class="pg-main-heading">Photographer Dashboard</h1>
+  <p class="pg-welcome-text">Welcome, <%= current_user.first_name %>! Manage your photography sessions here.</p>
 
+  <div class="row mt-4">
+    <!-- Bookings Column -->
+    <div class="col-md-6">
+      <div class="pg-section">
+        <h3 class="pg-section-heading">Upcoming Bookings</h3>
+        <% if @bookings.any? %>
+          <% @bookings.each do |booking| %>
+            <div class="pg-booking-card">
+              <div class="pg-booking-content">
+                <div>
+                  <h5 class="pg-booking-title"><%= booking.user.full_name %></h5>
+                  <p class="pg-booking-date">
+                    <%= booking.date.strftime('%B %d, %Y, %-I:%M %p') %>
+                  </p>
+                </div>
+                <button class="pg-action-btn" 
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#booking<%= booking.id %>Details"
+                        aria-expanded="false"
+                        aria-controls="booking<%= booking.id %>Details">
+                  View Details
+                </button>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="pg-empty-state">
+            <p>No bookings yet.</p>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
-<%= button_to 'Sign Out', destroy_user_session_path, method: :delete %>
+    <!-- Details Column -->
+    <div class="col-md-6">
+      <% @bookings.each do |booking| %>
+        <div class="collapse" id="booking<%= booking.id %>Details">
+          <div class="pg-details-card bg-body-tertiary">
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn-close" data-bs-toggle="collapse" data-bs-target="#booking<%= booking.id %>Details" aria-label="Close"></button>
+            </div>
+            <h4 class="pg-details-heading mb-0">Booking Details</h4>
+            <div class="pg-details-content">
+              <dl class="pg-details-list">
+                <div class="pg-detail-item">
+                  <dt>Client Name</dt>
+                  <dd><%= booking.user.full_name %></dd>
+                </div>
+                <div class="pg-detail-item">
+                  <dt>Date & Time</dt>
+                  <dd><%= booking.date.strftime('%B %d, %Y, %-I:%M %p') %></dd>
+                </div>
+
+                <div class="pg-detail-item">
+                  <dt>Contact Email</dt>
+                  <dd><%= booking.user.email %></dd>
+                </div>
+                <div class="pg-detail-item">
+                  <dt>Message</dt>
+                  <dd><%=  booking.message || "No message provided" %></dd>
+                </div>
+              </dl>
+              <div class="link-secondary">
+                <%= link_to "Accept", '#', class: "btn btn-custom-green" %> <!-- Green button for accepting -->
+                <%= link_to "Cancel Booking", '#', class: "btn btn-danger" %> <!-- Red button for cancelling -->
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

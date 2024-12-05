@@ -1,6 +1,66 @@
-<h1>Client Dashboard</h1>
-<p>Welcome, <%= current_user.email %>! Here you can book appointments.</p>
-<%= link_to 'Book a Time', new_booking_path %>
+<div class="container-fluid py-4">
+<h1 class="dashboard-heading">Client Dashboard</h1>
+<p class="text-center mb-4">Welcome, <%= current_user.first_name %>! Here you can book appointments.</p>
+
+<!-- Flash Message Display -->
+<% if flash[:notice]%>
+  <div class="alert alert-success" role="alert">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<div class="row">
+<!-- Left Column - Bookings -->
+<div class="col-md-6 px-4">
+  <div class="search-section">
+    <h2 class="h4 mb-3">My Bookings</h2>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#bookingsPartial" aria-expanded="true" aria-controls="bookingsPartial">
+      View Bookings
+    </button>
+    <div class="collapse show" id="bookingsPartial">
+      <%= render partial: 'bookings/index' %>
+    </div>
+  </div>
+</div>
+
+    <!-- Right Column - Search -->
+    <div class="col-md-6 px-4">
+        <div class="search-section">
+            <h2 class="h4 mb-3">Search for Photographers</h2>
+            <%= form_with url: client_dashboard_path, method: :get, local: true do |form| %>
+                <%= form.text_field :search, placeholder: "Search by first name", class: "form-control" %>
+                <%= form.submit "Search", class: "btn btn-primary" %>
+            <% end %>
+<div> 
+            <% if params[:search].present? %>
+            <button class="btn mt-3 search-result  btn-sm"  type="button" data-bs-toggle="collapse" data-bs-target="#searchResults" aria-expanded="true" aria-controls="searchResults">Search Result</button>
+            <div id="searchResults" class="collapse show mt-4">
+          <% else %>
+            <button class="btn mt-3 search-result  btn-sm"  type="button" data-bs-toggle="collapse" data-bs-target="#searchResults" aria-expanded="false" aria-controls="searchResults">
+              Show all
+            </button>
+            <div id="searchResults" class="collapse mt-4">
+          <% end %>
+          
+              <% if @photographers.any? %>
+                <h3 class="h5 mb-3">Search Results:</h3>
+                <% @photographers.each do |photographer| %>
+                  <div class="photographer-card">
+                    <p class="mb-2">Name: <%= photographer.full_name %></p>
+                    <p class="mb-2">Email: <%= photographer.email %></p>
+                    <%= link_to "Book Now", new_booking_path(photographer_id: photographer.id), class: "btn btn-success" %>
+                  </div>
+                <% end %>
+              <% else %>
+                <p>No photographers found'<%= params[:search] %>'.</p>
+              <% end %>
+            </div>
+          
+        </div>
+    </div>
+</div>
+</div>
 
 
-<%= button_to 'Sign Out', destroy_user_session_path, method: :delete %>
+
+

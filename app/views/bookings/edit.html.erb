@@ -2,19 +2,19 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="form-container mt-5">
-        <h2 class="login-heading mb-4 text-center">Book Photographer: <%= @photographer.full_name %></h2>
+        <h2 class="login-heading mb-4 text-center">Edit Booking</h2>
         
-        <%= form_with model: @booking, url: bookings_path, local: true do |form| %>
-          <div class="mb-3 text-center">
-            <p>Email: <%= @photographer.email %></p>
-            <%= form.hidden_field :photographer_id, value: @photographer.id %>
-          </div>
+        <%= form_with model: @booking, url: booking_path(@booking), method: :patch, local: true do |form| %>
+            <div class="mb-3 text-center">
+                <p>Photographer: <%= @photographer.full_name %></p>
+                <%= form.hidden_field :photographer_id, value: @photographer.id %>
+            </div>
 
-          <div class="row mb-3">
+            <div class="row mb-3">
               <%= form.label :date, "Select Booking Date and Time", class: "form-label" %>
               <%= form.datetime_local_field :date, class: "form-control" %>
-          
-          </div>
+        
+            </div>
 
           <div class="mb-3">
             <%= form.label :message, "Your Message", class: "form-label" %>
@@ -22,7 +22,7 @@
           </div>
 
           <div class="d-grid gap-2">
-            <%= form.submit "Confirm Booking", class: "btn btn-success btn-block" %>
+            <%= form.submit "Update Booking", class: "btn btn-success btn-block" %>
           </div>
 
           <div class="text-center mt-3">
